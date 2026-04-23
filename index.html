@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yanda - Bir ihtiyacın mı var, Yanda var.</title>
+  <meta name="description" content="Yanda ile yakınındaki eşyaları kirala veya eşyalarını kiraya ver. Komşudan komşuya paylaşım ekonomisi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1d5eb8;
+      --primary-light: #3b82f6;
+      --primary-dark: #1e40af;
+      --accent: #3b82f6;
+      --bg: #f0f5fc;
+      --bg-card: #ffffff;
+      --text: #0f1729;
+      --text-muted: #5b6b82;
+      --border: #dce5f0;
+      --gradient-start: #1d5eb8;
+      --gradient-end: #3b82f6;
+      --radius: 1.25rem;
+      --shadow: 0 4px 20px rgba(0,0,0,0.06);
+      --nav-bg: rgba(240, 245, 252, 0.88);
+    }
+
+    [data-theme="dark"] {
+      --primary: #3b82f6;
+      --primary-light: #60a5fa;
+      --primary-dark: #2563eb;
+      --accent: #3b82f6;
+      --bg: #0b1120;
+      --bg-card: #151f35;
+      --text: #e8edf5;
+      --text-muted: #7a90b0;
+      --border: #1f2f4d;
+      --gradient-start: #1d5eb8;
+      --gradient-end: #3b82f6;
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --nav-bg: rgba(11, 17, 32, 0.92);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s, background 0.3s, border-color 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 64px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      transition: opacity 0.2s;
+    }
+    .logo-light { display: block; }
+    .logo-dark  { display: none; }
+    [data-theme="dark"] .logo-light { display: none; }
+    [data-theme="dark"] .logo-dark  { display: block; }
+
+    .nav-brand span { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta {
+      background: var(--primary);
+      color: #fff !important;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+    /* Theme toggle */
+    .theme-toggle {
+      background: none;
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { border-color: var(--primary); color: var(--primary); background: rgba(59,130,246,0.08); }
+    .icon-sun, .icon-moon { width: 18px; height: 18px; }
+    [data-theme="light"] .icon-moon { display: none; }
+    [data-theme="dark"]  .icon-sun  { display: none; }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      margin: 6px 0;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(29,94,184,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 8px;
+    }
+    .hero-text h1 .gradient {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-text .tagline {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(29,94,184,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(29,94,184,0.4); }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-outline:hover { background: var(--primary); color: #fff; }
+
+    /* Phone mockup */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .phone-mockup {
+      width: 280px;
+      height: 560px;
+      background: var(--bg-card);
+      border-radius: 40px;
+      border: 4px solid var(--border);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04);
+      overflow: hidden;
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-16px); }
+    }
+    .phone-notch {
+      width: 120px;
+      height: 28px;
+      background: var(--bg);
+      border-radius: 0 0 20px 20px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      transition: background 0.3s;
+    }
+    .phone-screen { padding: 16px; }
+    .phone-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .phone-header-logo {
+      width: 24px;
+      height: 24px;
+      background: var(--primary);
+      border-radius: 6px;
+    }
+    .phone-header-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .phone-search {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      transition: background 0.3s;
+    }
+    .phone-chips {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .phone-chip {
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      white-space: nowrap;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .phone-chip.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .phone-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .phone-card {
+      background: var(--bg);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .phone-card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    [data-theme="dark"] .phone-card-img { background: linear-gradient(135deg, #1e3a5f, #1d4ed8); }
+    .phone-card-body { padding: 8px; }
+    .phone-card-title { font-size: 0.6rem; font-weight: 700; margin-bottom: 2px; color: var(--text); }
+    .phone-card-price { font-size: 0.6rem; color: var(--primary); font-weight: 700; }
+
+    /* ===== STATS ===== */
+    .stats {
+      padding: 60px 24px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    .stat-item h3 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+    .stat-item p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* ===== SECTION COMMON ===== */
+    section { padding: 100px 24px; }
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+    .section-tag {
+      display: inline-block;
+      background: rgba(59,130,246,0.1);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* ===== FEATURES ===== */
+    .features-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s, border-color 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(59,130,246,0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-it-works { background: var(--bg-card); transition: background 0.3s; }
+    .steps {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      left: 35px;
+      top: 35px;
+      bottom: 35px;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+      border-radius: 4px;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      padding: 28px 0;
+      position: relative;
+    }
+    .step-number {
+      flex-shrink: 0;
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 900;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 15px rgba(29,94,184,0.3);
+    }
+    .step-content h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      margin-top: 8px;
+    }
+    .step-content p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ===== CATEGORIES ===== */
+    .categories-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+    }
+    .category-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 16px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--primary);
+    }
+    .category-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+    .category-card h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      margin: 0 24px 0;
+      border-radius: 32px;
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    .cta h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .cta p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    .cta .btn {
+      background: #fff;
+      color: var(--gradient-start);
+      font-weight: 800;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      position: relative;
+    }
+    .cta .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 60px 24px 30px;
+      text-align: center;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .footer-logo {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+    .footer-brand span { font-weight: 800; font-size: 1.3rem; }
+    .footer-tagline {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .categories-grid { grid-template-columns: repeat(3, 1fr); }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+      .hero-text h1 { font-size: 2.5rem; }
+      .hero-buttons { justify-content: center; }
+      .phone-mockup { width: 240px; height: 480px; }
+
+      .features-grid { grid-template-columns: 1fr; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item h3 { font-size: 2rem; }
+
+      .section-header h2 { font-size: 2rem; }
+      .cta h2 { font-size: 2rem; }
+      .cta { margin: 0 12px; padding: 60px 20px; border-radius: 24px; }
+
+      .steps::before { left: 20px; }
+      .step-number { width: 42px; height: 42px; font-size: 1rem; }
+      .step { gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-text h1 { font-size: 2rem; }
+      .hero-text .tagline { font-size: 1rem; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item h3 { font-size: 1.5rem; }
+      .stats-inner { grid-template-columns: 1fr 1fr; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <img src="icon-light.svg" class="nav-logo logo-light" alt="Yanda Logo" />
+        <img src="icon-dark.svg"  class="nav-logo logo-dark"  alt="Yanda Logo" />
+        <span>Yanda</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Özellikler</a>
+        <a href="#how">Nasıl Çalışır</a>
+        <a href="#categories">Kategoriler</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Tema değiştir">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <a href="https://yanda-mobile.vercel.app" class="nav-cta">Uygulamaya Git</a>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="theme-toggle" id="themeToggleMobile" aria-label="Tema değiştir" style="display:none;">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>
+          Bir ihtiyacın mı var,<br />
+          <span class="gradient">Yanda var.</span>
+        </h1>
+        <p class="tagline">
+          Yakınındaki eşyaları kirala, kullanmadıklarını kiraya ver.
+          Komşudan komşuya paylaşım ekonomisi.
+        </p>
+        <div class="hero-buttons">
+          <a href="https://yanda-mobile.vercel.app" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            Hemen Başla
+          </a>
+          <a href="#how" class="btn btn-outline">Nasıl Çalışır?</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-header">
+              <div class="phone-header-logo"></div>
+              <span class="phone-header-title">Yanda</span>
+            </div>
+            <div class="phone-search">Eşya ara...</div>
+            <div class="phone-chips">
+              <span class="phone-chip active">Tümü</span>
+              <span class="phone-chip">Alet</span>
+              <span class="phone-chip">Elektronik</span>
+              <span class="phone-chip">Dış Mekan</span>
+            </div>
+            <div class="phone-grid">
+              <div class="phone-card">
+                <div class="phone-card-img">&#128295;</div>
+                <div class="phone-card-body">
+                  <div class="phone-card-title">Matkap</div>
+                  <div class="phone-card-price">50 TL/gün</div>
+                </div>
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-img">&#127908;</div>
+                <div class="phone-card-body">
+                  <div class="phone-card-title">Mikrofon</div>
+                  <div class="phone-card-price">75 TL/gün</div>
+                </div>
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-img">&#9978;&#65039;</div>
+                <div class="phone-card-body">
+                  <div class="phone-card-title">Çadır</div>
+                  <div class="phone-card-price">100 TL/gün</div>
+                </div>
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-img">&#127928;</div>
+                <div class="phone-card-body">
+                  <div class="phone-card-title">Gitar</div>
+                  <div class="phone-card-price">60 TL/gün</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <h3>6</h3>
+        <p>Kategori</p>
+      </div>
+      <div class="stat-item reveal">
+        <h3>P2P</h3>
+        <p>Kişisel Kiralama</p>
+      </div>
+      <div class="stat-item reveal">
+        <h3>%100</h3>
+        <p>Güvenli Sözleşme</p>
+      </div>
+      <div class="stat-item reveal">
+        <h3>Harita</h3>
+        <p>Konum Bazlı Arama</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-header reveal">
+      <span class="section-tag">Özellikler</span>
+      <h2>Neden Yanda?</h2>
+      <p>Komşudan komşuya eşya kiralama platformu ile hem para kazan, hem tasarruf et.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#128269;</div>
+        <h3>Kolay Keşfet</h3>
+        <p>Yakınındaki eşyaları kategori, arama ve harita üzerinden anında bul. Filtreleme ile tam ihtiyacına uygun ürünü seç.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#128221;</div>
+        <h3>Güvenli Sözleşme</h3>
+        <p>Her kiralama için dijital sözleşme oluşturulur. Teslim ve iade fotoğrafları ile her şey kayıt altında.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#128176;</div>
+        <h3>Esnek Fiyatlandırma</h3>
+        <p>Günlük kira fiyatını kendin belirle. En az ve en çok fiyat skalası ile esnek fiyatlandırma sun.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#128205;</div>
+        <h3>Konum Bazlı</h3>
+        <p>Harita üzerinde yakınındaki eşyaları gör. Mahalle ve sokak bazında filtreleme yap, en yakın ürünü bul.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#128247;</div>
+        <h3>Fotoğraf Doğrulama</h3>
+        <p>Teslim alma ve iade sırasında fotoğraf çekilir. Eşyanın durumu her zaman belgelidir.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#128241;</div>
+        <h3>Mobil Uygulama</h3>
+        <p>Hem web hem Android üzerinden eriş. Nerede olursan ol, eşyaları kirala veya kiraya ver.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how">
+    <div class="section-header reveal">
+      <span class="section-tag">Adımlar</span>
+      <h2>Nasıl Çalışır?</h2>
+      <p>Sadece 4 adımda eşya kirala veya kiraya ver.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Hesap Oluştur</h3>
+          <p>E-posta ve şifre ile hızlıca kayıt ol. Profil bilgilerini tamamla ve hemen kullanmaya başla.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Eşya Ara veya Listele</h3>
+          <p>İhtiyacın olan eşyayı arat veya kullanmadığın eşyaları fotoğraf çekip listeye ekle. Fiyatını ve kategorisini belirle.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Kiralama Sözleşmesi İmzala</h3>
+          <p>Kiralama tarihlerini seç, dijital sözleşmeyi onayla. Teslim alma noktasında fotoğraflarla durumu belgele.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Kullan ve İade Et</h3>
+          <p>Eşyayı kullan, süresi dolunca iade et. İade sırasında durum fotoğrafları çekilir ve kiralama tamamlanır.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section id="categories">
+    <div class="section-header reveal">
+      <span class="section-tag">Kategoriler</span>
+      <h2>Ne Arıyorsan Var</h2>
+      <p>Farklı kategorilerdeki yüzlerce eşyaya göz at.</p>
+    </div>
+    <div class="categories-grid">
+      <div class="category-card reveal">
+        <div class="category-icon">&#128295;</div>
+        <h4>Aletler</h4>
+      </div>
+      <div class="category-card reveal">
+        <div class="category-icon">&#128187;</div>
+        <h4>Elektronik</h4>
+      </div>
+      <div class="category-card reveal">
+        <div class="category-icon">&#9978;&#65039;</div>
+        <h4>Dış Mekan</h4>
+      </div>
+      <div class="category-card reveal">
+        <div class="category-icon">&#127860;</div>
+        <h4>Mutfak</h4>
+      </div>
+      <div class="category-card reveal">
+        <div class="category-icon">&#127928;</div>
+        <h4>Müzik</h4>
+      </div>
+      <div class="category-card reveal">
+        <div class="category-icon">&#10024;</div>
+        <h4>Daha Fazlası</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding-bottom: 60px;">
+    <div class="cta reveal">
+      <h2>Hemen Başla</h2>
+      <p>Yakınındaki eşyaları keşfet, kullanmadıklarını kiraya vererek kazanmaya başla.</p>
+      <a href="https://yanda-mobile.vercel.app" class="btn">
+        Uygulamaya Git
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="icon-light.svg" class="footer-logo logo-light" alt="Yanda Logo" />
+        <img src="icon-dark.svg"  class="footer-logo logo-dark"  alt="Yanda Logo" />
+        <span>Yanda</span>
+      </div>
+      <p class="footer-tagline">Bir ihtiyacın mı var, Yanda var.</p>
+      <div class="footer-links">
+        <a href="#features">Özellikler</a>
+        <a href="#how">Nasıl Çalışır</a>
+        <a href="#categories">Kategoriler</a>
+        <a href="https://yanda-mobile.vercel.app">Uygulama</a>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Yanda. Tüm hakları saklıdır.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Theme toggle
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('yanda-theme', theme);
+    }
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    }
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    document.getElementById('themeToggleMobile').addEventListener('click', toggleTheme);
+
+    // Restore saved theme or respect OS preference
+    const saved = localStorage.getItem('yanda-theme');
+    if (saved) {
+      applyTheme(saved);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      applyTheme('dark');
+    }
+
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileThemeBtn = document.getElementById('themeToggleMobile');
+    const navLinks = document.querySelector('.nav-links');
+    let menuOpen = false;
+
+    function updateMobileToggleVisibility() {
+      const isMobile = window.innerWidth <= 768;
+      mobileThemeBtn.style.display = isMobile ? 'flex' : 'none';
+    }
+    updateMobileToggleVisibility();
+    window.addEventListener('resize', updateMobileToggleVisibility);
+
+    mobileMenuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        navLinks.style.display = 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'fixed';
+        navLinks.style.top = '64px';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.background = 'var(--nav-bg)';
+        navLinks.style.backdropFilter = 'blur(16px)';
+        navLinks.style.padding = '20px 24px';
+        navLinks.style.borderBottom = '1px solid var(--border)';
+        navLinks.style.gap = '16px';
+        navLinks.style.zIndex = '99';
+      } else {
+        navLinks.style.display = '';
+      }
+    });
+  </script>
+
+</body>
+</html>
