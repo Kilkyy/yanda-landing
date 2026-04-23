@@ -247,102 +247,250 @@
       align-items: center;
     }
     .phone-mockup {
-      width: 280px;
-      height: 560px;
-      background: var(--bg-card);
-      border-radius: 40px;
-      border: 4px solid var(--border);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04);
+      width: 272px;
+      height: 572px;
+      background: #f2f3f5;
+      border-radius: 44px;
+      border: 5px solid #1a1a2e;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06), inset 0 0 0 1px rgba(255,255,255,0.08);
       overflow: hidden;
       position: relative;
       animation: float 6s ease-in-out infinite;
-      transition: background 0.3s, border-color 0.3s;
+      display: flex;
+      flex-direction: column;
     }
+    [data-theme="dark"] .phone-mockup { background: #0d1117; border-color: #2a2a3e; }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-16px); }
     }
+
+    /* Notch */
     .phone-notch {
-      width: 120px;
-      height: 28px;
-      background: var(--bg);
-      border-radius: 0 0 20px 20px;
+      width: 100px;
+      height: 24px;
+      background: #1a1a2e;
+      border-radius: 0 0 18px 18px;
       margin: 0 auto;
-      position: relative;
-      z-index: 2;
-      transition: background 0.3s;
+      flex-shrink: 0;
+      z-index: 3;
     }
-    .phone-screen { padding: 16px; }
-    .phone-header {
+    [data-theme="dark"] .phone-notch { background: #000; }
+
+    /* Top bar */
+    .pm-topbar {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
+      justify-content: space-between;
+      padding: 8px 14px 6px;
+      flex-shrink: 0;
     }
-    .phone-header-logo {
-      width: 24px;
-      height: 24px;
-      background: var(--primary);
-      border-radius: 6px;
+    .pm-brand {
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
-    .phone-header-title {
+    .pm-brand-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--primary);
+    }
+    .pm-brand-name {
       font-weight: 800;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       color: var(--text);
     }
-    .phone-search {
-      background: var(--bg);
-      border-radius: 12px;
-      padding: 10px 14px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-      transition: background 0.3s;
-    }
-    .phone-chips {
+    .pm-topicons {
       display: flex;
+      align-items: center;
       gap: 6px;
-      margin-bottom: 16px;
+    }
+    .pm-topicon {
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+    .pm-topicon svg { width: 14px; height: 14px; }
+    .pm-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Scrollable body */
+    .pm-body {
+      flex: 1;
+      overflow: hidden;
+      padding: 4px 14px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .pm-greeting {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+    .pm-subtitle {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      margin-top: -4px;
+      font-weight: 500;
+    }
+    .pm-search {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 7px 10px;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    [data-theme="dark"] .pm-search { background: #1a2235; border-color: #2a3a5c; }
+    .pm-search svg { width: 10px; height: 10px; flex-shrink: 0; }
+    .pm-chips {
+      display: flex;
+      gap: 5px;
       overflow: hidden;
     }
-    .phone-chip {
-      padding: 4px 12px;
+    .pm-chip {
+      padding: 3px 9px;
       border-radius: 50px;
-      font-size: 0.65rem;
+      font-size: 0.55rem;
       font-weight: 600;
       white-space: nowrap;
       border: 1px solid var(--border);
       color: var(--text-muted);
+      background: var(--bg-card);
     }
-    .phone-chip.active {
+    [data-theme="dark"] .pm-chip { background: #1a2235; border-color: #2a3a5c; }
+    .pm-chip.active {
       background: var(--primary);
       color: #fff;
       border-color: var(--primary);
     }
-    .phone-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
+    .pm-count {
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      font-weight: 500;
     }
-    .phone-card {
-      background: var(--bg);
-      border-radius: 12px;
+
+    /* Product cards */
+    .pm-card {
+      border-radius: 14px;
       overflow: hidden;
-      transition: background 0.3s;
+      background: var(--bg-card);
+      flex-shrink: 0;
     }
-    .phone-card-img {
+    [data-theme="dark"] .pm-card { background: #1a2235; }
+    .pm-card-photo {
       width: 100%;
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      height: 130px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pm-photo-lens {
+      background: linear-gradient(145deg, #1c1c2e 0%, #2d2d4e 40%, #1a1a3e 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
     }
-    [data-theme="dark"] .phone-card-img { background: linear-gradient(135deg, #1e3a5f, #1d4ed8); }
-    .phone-card-body { padding: 8px; }
-    .phone-card-title { font-size: 0.6rem; font-weight: 700; margin-bottom: 2px; color: var(--text); }
-    .phone-card-price { font-size: 0.6rem; color: var(--primary); font-weight: 700; }
+    .pm-photo-lens::before {
+      content: '';
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #4a4a6a, #1a1a3a 60%, #0d0d1a);
+      box-shadow: 0 0 0 6px #2a2a4a, 0 0 0 9px #1a1a3a, 0 0 20px rgba(100,100,255,0.15);
+    }
+    .pm-photo-drill {
+      background: linear-gradient(135deg, #d4a96a 0%, #b8863a 50%, #8b6020 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pm-photo-drill::before {
+      content: '';
+      width: 14px;
+      height: 80px;
+      background: linear-gradient(to bottom, #6b6b6b, #333, #555);
+      border-radius: 4px;
+      transform: rotate(-30deg);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .pm-badges {
+      position: absolute;
+      top: 7px;
+      left: 7px;
+      right: 7px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .pm-badge {
+      font-size: 0.48rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 5px;
+      backdrop-filter: blur(4px);
+    }
+    .pm-badge-cat {
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+    }
+    .pm-badge-cond {
+      background: var(--primary);
+      color: #fff;
+    }
+    .pm-card-info {
+      padding: 8px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .pm-card-name {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .pm-card-price {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Bottom nav */
+    .pm-bottomnav {
+      display: flex;
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+      flex-shrink: 0;
+      padding: 6px 0 10px;
+    }
+    [data-theme="dark"] .pm-bottomnav { background: #111827; border-color: #1f2a3d; }
+    .pm-nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      color: var(--text-muted);
+    }
+    .pm-nav-item.active { color: var(--primary); }
+    .pm-nav-item svg { width: 14px; height: 14px; }
+    .pm-nav-item span { font-size: 0.42rem; font-weight: 600; }
 
     /* ===== STATS ===== */
     .stats {
@@ -740,48 +888,100 @@
       </div>
       <div class="hero-visual">
         <div class="phone-mockup">
+          <!-- Notch -->
           <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="phone-header">
-              <div class="phone-header-logo"></div>
-              <span class="phone-header-title">Yanda</span>
+
+          <!-- Top Bar -->
+          <div class="pm-topbar">
+            <div class="pm-brand">
+              <svg class="pm-brand-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C7.58 2 4 5.58 4 10c0 4.42 8 14 8 14s8-9.58 8-14c0-4.42-3.58-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+              </svg>
+              <span class="pm-brand-name">Yanda</span>
             </div>
-            <div class="phone-search">Eşya ara...</div>
-            <div class="phone-chips">
-              <span class="phone-chip active">Tümü</span>
-              <span class="phone-chip">Alet</span>
-              <span class="phone-chip">Elektronik</span>
-              <span class="phone-chip">Dış Mekan</span>
+            <div class="pm-topicons">
+              <div class="pm-topicon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></svg>
+              </div>
+              <div class="pm-topicon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              </div>
+              <div class="pm-topicon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              </div>
+              <div class="pm-avatar">H</div>
             </div>
-            <div class="phone-grid">
-              <div class="phone-card">
-                <div class="phone-card-img">&#128295;</div>
-                <div class="phone-card-body">
-                  <div class="phone-card-title">Matkap</div>
-                  <div class="phone-card-price">50 TL/gün</div>
+          </div>
+
+          <!-- Body -->
+          <div class="pm-body">
+            <div class="pm-greeting">Merhaba 👋</div>
+            <div class="pm-subtitle">Yakınındaki eşyalara göz at</div>
+
+            <div class="pm-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              Eşya ara...
+            </div>
+
+            <div class="pm-chips">
+              <span class="pm-chip active">Tümü</span>
+              <span class="pm-chip">Araç-Gereç</span>
+              <span class="pm-chip">Elektronik</span>
+              <span class="pm-chip">Dış Mekan</span>
+            </div>
+
+            <div class="pm-count">4 ürün bulundu</div>
+
+            <!-- Card 1 — Fuji Lens -->
+            <div class="pm-card">
+              <div class="pm-card-photo pm-photo-lens">
+                <div class="pm-badges">
+                  <span class="pm-badge pm-badge-cat">Elektronik</span>
+                  <span class="pm-badge pm-badge-cond">Sıfır Gibi</span>
                 </div>
               </div>
-              <div class="phone-card">
-                <div class="phone-card-img">&#127908;</div>
-                <div class="phone-card-body">
-                  <div class="phone-card-title">Mikrofon</div>
-                  <div class="phone-card-price">75 TL/gün</div>
+              <div class="pm-card-info">
+                <span class="pm-card-name">50-130 Fuji Lens</span>
+                <span class="pm-card-price">5 - 10</span>
+              </div>
+            </div>
+
+            <!-- Card 2 — Matkap -->
+            <div class="pm-card">
+              <div class="pm-card-photo pm-photo-drill">
+                <div class="pm-badges">
+                  <span class="pm-badge pm-badge-cat">Araç-Gereç</span>
+                  <span class="pm-badge pm-badge-cond">İyi</span>
                 </div>
               </div>
-              <div class="phone-card">
-                <div class="phone-card-img">&#9978;&#65039;</div>
-                <div class="phone-card-body">
-                  <div class="phone-card-title">Çadır</div>
-                  <div class="phone-card-price">100 TL/gün</div>
-                </div>
+              <div class="pm-card-info">
+                <span class="pm-card-name">Matkap Seti</span>
+                <span class="pm-card-price">15 - 25</span>
               </div>
-              <div class="phone-card">
-                <div class="phone-card-img">&#127928;</div>
-                <div class="phone-card-body">
-                  <div class="phone-card-title">Gitar</div>
-                  <div class="phone-card-price">60 TL/gün</div>
-                </div>
-              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Nav -->
+          <div class="pm-bottomnav">
+            <div class="pm-nav-item active">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              <span>Browse</span>
+            </div>
+            <div class="pm-nav-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+              <span>Map</span>
+            </div>
+            <div class="pm-nav-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              <span>My Items</span>
+            </div>
+            <div class="pm-nav-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+              <span>Rentals</span>
+            </div>
+            <div class="pm-nav-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>Profile</span>
             </div>
           </div>
         </div>
