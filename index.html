@@ -766,6 +766,194 @@
       font-size: 0.8rem;
     }
 
+    /* ===== P2P SPLIT ===== */
+    .p2p { background: var(--bg-card); transition: background 0.3s; }
+    .p2p-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .p2p-card {
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .p2p-card-lender {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff;
+    }
+    .p2p-card-renter {
+      background: var(--bg);
+      border: 2px solid var(--border);
+      color: var(--text);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .p2p-card-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .p2p-card-lender .p2p-card-tag { background: rgba(255,255,255,0.2); color: #fff; }
+    .p2p-card-renter .p2p-card-tag { background: rgba(59,130,246,0.1); color: var(--primary); }
+    .p2p-card h3 { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 12px; line-height: 1.2; }
+    .p2p-card-lender h3 { color: #fff; }
+    .p2p-card p { font-size: 0.95rem; line-height: 1.75; margin-bottom: 28px; }
+    .p2p-card-lender p { color: rgba(255,255,255,0.82); }
+    .p2p-card-renter p { color: var(--text-muted); }
+    .p2p-bullets { display: flex; flex-direction: column; gap: 10px; }
+    .p2p-bullet {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .p2p-card-lender .p2p-bullet { color: rgba(255,255,255,0.9); }
+    .p2p-card-renter .p2p-bullet { color: var(--text); }
+    .p2p-bullet-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+    }
+    .p2p-card-lender .p2p-bullet-dot { background: rgba(255,255,255,0.25); color: #fff; }
+    .p2p-card-renter .p2p-bullet-dot { background: rgba(59,130,246,0.15); color: var(--primary); }
+    .p2p-deco {
+      position: absolute;
+      bottom: -40px;
+      right: -40px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      opacity: 0.07;
+    }
+    .p2p-card-lender .p2p-deco { background: #fff; }
+    .p2p-card-renter .p2p-deco { background: var(--primary); }
+
+    /* ===== RENTAL OPTIONS ===== */
+    .rental-options { padding: 100px 24px; }
+    .rental-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .rental-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .rental-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--primary); }
+    .rental-card.featured {
+      border-color: var(--primary);
+      background: linear-gradient(160deg, rgba(59,130,246,0.06), rgba(29,94,184,0.04));
+    }
+    .rental-featured-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+    .rental-icon {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+    }
+    .rental-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; }
+    .rental-price {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: rgba(59,130,246,0.1);
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .rental-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px; }
+    .rental-examples { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+    .rental-example {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .rental-example::before {
+      content: '→';
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    /* ===== TRUST SECTION ===== */
+    .trust { background: var(--bg-card); transition: background 0.3s; }
+    .trust-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .trust-text h2 { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; line-height: 1.2; }
+    .trust-text p { color: var(--text-muted); font-size: 1rem; line-height: 1.75; margin-bottom: 36px; }
+    .trust-list { display: flex; flex-direction: column; gap: 16px; }
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .trust-item-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(59,130,246,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .trust-item-text h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+    .trust-item-text p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 0; }
+    .trust-cards { display: flex; flex-direction: column; gap: 16px; }
+    .trust-stat-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: background 0.3s;
+    }
+    .trust-stat-num { font-size: 2rem; font-weight: 900; color: var(--primary); letter-spacing: -1px; line-height: 1; }
+    .trust-stat-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin-top: 2px; }
+
     /* ===== ANIMATIONS ===== */
     .reveal {
       opacity: 0;
@@ -782,6 +970,7 @@
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .categories-grid { grid-template-columns: repeat(3, 1fr); }
       .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .trust-inner { gap: 40px; }
     }
 
     @media (max-width: 768px) {
@@ -800,6 +989,10 @@
       .features-grid { grid-template-columns: 1fr; }
       .categories-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .p2p-grid { grid-template-columns: 1fr; }
+      .rental-grid { grid-template-columns: 1fr; }
+      .trust-inner { grid-template-columns: 1fr; }
+      .trust-cards { display: grid; grid-template-columns: 1fr 1fr; }
       .stat-item h3 { font-size: 2rem; }
 
       .section-header h2 { font-size: 2rem; }
@@ -832,8 +1025,9 @@
       </a>
       <div class="nav-links">
         <a href="#features">Özellikler</a>
+        <a href="#p2p">Komşudan Komşuya</a>
+        <a href="#rental">Kiralama</a>
         <a href="#how">Nasıl Çalışır</a>
-        <a href="#categories">Kategoriler</a>
         <button class="theme-toggle" id="themeToggle" aria-label="Tema değiştir">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
@@ -993,20 +1187,20 @@
   <section class="stats">
     <div class="stats-inner">
       <div class="stat-item reveal">
-        <h3>6</h3>
-        <p>Kategori</p>
+        <h3>1 Saat</h3>
+        <p>Minimum Kiralama Süresi</p>
       </div>
       <div class="stat-item reveal">
         <h3>P2P</h3>
-        <p>Kişisel Kiralama</p>
+        <p>Komşudan Komşuya</p>
       </div>
       <div class="stat-item reveal">
         <h3>%100</h3>
-        <p>Güvenli Sözleşme</p>
+        <p>Dijital Güvenli Sözleşme</p>
       </div>
       <div class="stat-item reveal">
-        <h3>Harita</h3>
-        <p>Konum Bazlı Arama</p>
+        <h3>6+</h3>
+        <p>Kategori</p>
       </div>
     </div>
   </section>
@@ -1048,6 +1242,110 @@
         <div class="feature-icon">&#128241;</div>
         <h3>Mobil Uygulama</h3>
         <p>Hem web hem Android üzerinden eriş. Nerede olursan ol, eşyaları kirala veya kiraya ver.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- P2P -->
+  <section class="p2p" id="p2p">
+    <div class="section-header reveal">
+      <span class="section-tag">Nasıl Çalışır</span>
+      <h2>Komşudan Komşuya</h2>
+      <p>Yanda, aynı mahalledeki insanları buluşturan bir paylaşım platformudur. Satın almana gerek yok, komşundan kirala.</p>
+    </div>
+    <div class="p2p-grid">
+      <div class="p2p-card p2p-card-lender reveal">
+        <span class="p2p-card-tag">Kiraya Veren</span>
+        <h3>Eşyaların sende dursun,<br />para da kazansın.</h3>
+        <p>Evinde kullanmadığın matkap, kamera, çadır veya müzik aleti var mı? Listeye ekle, komşularına kiraya ver ve her kiralamadan gelir elde et.</p>
+        <div class="p2p-bullets">
+          <div class="p2p-bullet">
+            <span class="p2p-bullet-dot">✓</span>
+            Saatlik, günlük veya haftalık fiyat belirle
+          </div>
+          <div class="p2p-bullet">
+            <span class="p2p-bullet-dot">✓</span>
+            Her kiralama için dijital sözleşme otomatik oluşur
+          </div>
+          <div class="p2p-bullet">
+            <span class="p2p-bullet-dot">✓</span>
+            Teslim ve iade fotoğrafları ile eşyan güvende
+          </div>
+          <div class="p2p-bullet">
+            <span class="p2p-bullet-dot">✓</span>
+            Uygun olmadığın tarihleri takvimden kapat
+          </div>
+        </div>
+        <div class="p2p-deco"></div>
+      </div>
+      <div class="p2p-card p2p-card-renter reveal">
+        <span class="p2p-card-tag">Kiralayan</span>
+        <h3>Satın almana gerek yok,<br />birkaç saatliğine kirala.</h3>
+        <p>Hafta sonu kullanacağın bir matkap için yüzlerce lira harcama. Harita üzerinde yakınında listeli eşyayı bul, 1 saat veya 1 günlüğüne kirala.</p>
+        <div class="p2p-bullets">
+          <div class="p2p-bullet">
+            <span class="p2p-bullet-dot">✓</span>
+            Minimum 1 saatlik kiralama imkânı
+          </div>
+          <div class="p2p-bullet">
+            <span class="p2p-bullet-dot">✓</span>
+            Harita ile en yakın eşyayı saniyeler içinde bul
+          </div>
+          <div class="p2p-bullet">
+            <span class="p2p-bullet-dot">✓</span>
+            Kiralama öncesi eşya durumunu fotoğrafla gör
+          </div>
+          <div class="p2p-bullet">
+            <span class="p2p-bullet-dot">✓</span>
+            Sözleşmeli kiralama — her iki taraf için güvence
+          </div>
+        </div>
+        <div class="p2p-deco"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RENTAL OPTIONS -->
+  <section class="rental-options" id="rental">
+    <div class="section-header reveal">
+      <span class="section-tag">Kiralama Seçenekleri</span>
+      <h2>Ne Kadar Süre İstersen</h2>
+      <p>1 saatlik ihtiyaçtan aylık kiralamaya kadar esnek süreler. Fiyatı kiraya veren belirler, sen sadece seçersin.</p>
+    </div>
+    <div class="rental-grid">
+      <div class="rental-card reveal">
+        <div class="rental-icon">⏱️</div>
+        <h3>Saatlik</h3>
+        <div class="rental-price">Minimum 1 saat</div>
+        <p>Sadece birkaç saate ihtiyacın mı var? Saatlik kiralama ile gereksiz yere tam gün ücreti ödemezsin.</p>
+        <div class="rental-examples">
+          <span class="rental-example">Taşınma için 3 saatlik matkap</span>
+          <span class="rental-example">Fotoğraf çekimi için 2 saatlik lens</span>
+          <span class="rental-example">Toplantı için 1 saatlik projektör</span>
+        </div>
+      </div>
+      <div class="rental-card featured reveal">
+        <span class="rental-featured-badge">En Popüler</span>
+        <div class="rental-icon">📅</div>
+        <h3>Günlük</h3>
+        <div class="rental-price">1 – 30 gün arası</div>
+        <p>Hafta sonu projesi veya birkaç günlük kullanım için günlük kiralama en çok tercih edilen seçenek.</p>
+        <div class="rental-examples">
+          <span class="rental-example">Hafta sonu kamp için çadır</span>
+          <span class="rental-example">3 günlük tadilat için alet seti</span>
+          <span class="rental-example">Doğum günü için hoparlör sistemi</span>
+        </div>
+      </div>
+      <div class="rental-card reveal">
+        <div class="rental-icon">📆</div>
+        <h3>Haftalık / Uzun Dönem</h3>
+        <div class="rental-price">7 gün ve üzeri</div>
+        <p>Uzun süreli projelerde veya tatillerde haftalık ve aylık kiralama seçenekleriyle daha uygun fiyat al.</p>
+        <div class="rental-examples">
+          <span class="rental-example">Yaz tatili için şnorkel seti</span>
+          <span class="rental-example">Uzun süre proje için kamera</span>
+          <span class="rental-example">Bahçe sezonu için çim biçme makinesi</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1126,6 +1424,73 @@
     </div>
   </section>
 
+  <!-- TRUST -->
+  <section class="trust" id="trust">
+    <div class="trust-inner reveal">
+      <div class="trust-text">
+        <span class="section-tag">Güven & Güvenlik</span>
+        <h2>Her Kiralama<br />Sözleşmelidir</h2>
+        <p>Yanda'da hiçbir kiralama söz verilip unutulmaz. Dijital sözleşme, fotoğraf doğrulama ve iki taraflı güvence sistemi ile her işlem şeffaf ve belgelidir.</p>
+        <div class="trust-list">
+          <div class="trust-item">
+            <div class="trust-item-icon">📋</div>
+            <div class="trust-item-text">
+              <h4>Otomatik Dijital Sözleşme</h4>
+              <p>Kiralama onaylanır onaylanmaz her iki taraf için bağlayıcı dijital sözleşme oluşturulur.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-item-icon">📸</div>
+            <div class="trust-item-text">
+              <h4>Teslim & İade Fotoğrafı</h4>
+              <p>Eşyanın teslim ve iade anında fotoğraf çekilir, uygulama üzerinde kayıt altına alınır.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-item-icon">🔒</div>
+            <div class="trust-item-text">
+              <h4>İki Taraflı Güvence</h4>
+              <p>Hem kiraya veren hem kiralayan, sözleşme kapsamında hukuki güvence altındadır.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-item-icon">⭐</div>
+            <div class="trust-item-text">
+              <h4>Kullanıcı Değerlendirme Sistemi</h4>
+              <p>Her kiralamadan sonra karşılıklı değerlendirme yapılır; güvenilir kullanıcılar öne çıkar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="trust-cards">
+        <div class="trust-stat-card">
+          <div>
+            <div class="trust-stat-num">P2P</div>
+            <div class="trust-stat-label">Kişiden kişiye, aracısız kiralama</div>
+          </div>
+        </div>
+        <div class="trust-stat-card">
+          <div>
+            <div class="trust-stat-num">1 Saat</div>
+            <div class="trust-stat-label">Minimum kiralama süresi — ihtiyacın kadar kirala</div>
+          </div>
+        </div>
+        <div class="trust-stat-card">
+          <div>
+            <div class="trust-stat-num">%100</div>
+            <div class="trust-stat-label">Sözleşmeli kiralamalar — her işlem belgeli</div>
+          </div>
+        </div>
+        <div class="trust-stat-card">
+          <div>
+            <div class="trust-stat-num">2× Fotoğraf</div>
+            <div class="trust-stat-label">Teslim + iade anı fotoğrafları ile hasar kaydı</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section style="padding-bottom: 60px;">
     <div class="cta reveal">
@@ -1149,6 +1514,8 @@
       <p class="footer-tagline">Bir ihtiyacın mı var, Yanda var.</p>
       <div class="footer-links">
         <a href="#features">Özellikler</a>
+        <a href="#p2p">Komşudan Komşuya</a>
+        <a href="#rental">Kiralama Seçenekleri</a>
         <a href="#how">Nasıl Çalışır</a>
         <a href="#categories">Kategoriler</a>
         <a href="https://yanda-mobile.vercel.app">Uygulama</a>
