@@ -3,8 +3,128 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yanda - Bir ihtiyacın mı var, Yanda var.</title>
-  <meta name="description" content="Yanda ile yakınındaki eşyaları kirala veya eşyalarını kiraya ver. Komşudan komşuya paylaşım ekonomisi." />
+
+  <!-- Primary SEO -->
+  <title>Yanda – Komşudan Komşuya Eşya Kiralama | Saatlik & Günlük</title>
+  <meta name="description" content="Yanda ile yakınındaki eşyaları saatlik veya günlük kirala, kullanmadıklarını kiraya vererek para kazan. Dijital sözleşmeli güvenli P2P paylaşım ekonomisi." />
+  <meta name="keywords" content="eşya kiralama, komşudan kiralama, p2p kiralama, yanda, yakınımda kiralık, günlük kiralama, saatlik kiralama, matkap kirala, kamera kirala, çadır kirala, alet kiralama" />
+  <meta name="author" content="Yanda" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://yanda-landing.vercel.app" />
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yanda-landing.vercel.app" />
+  <meta property="og:site_name" content="Yanda" />
+  <meta property="og:title" content="Yanda – Komşudan Komşuya Eşya Kiralama" />
+  <meta property="og:description" content="Yakınındaki eşyaları saatlik veya günlük kirala, kullanmadıklarını kiraya vererek para kazan. Dijital sözleşmeli güvenli P2P paylaşım ekonomisi." />
+  <meta property="og:image" content="https://yanda-mobile.vercel.app/icon-512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="Yanda Uygulama İkonu" />
+  <meta property="og:locale" content="tr_TR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@yandaapp" />
+  <meta name="twitter:title" content="Yanda – Komşudan Komşuya Eşya Kiralama" />
+  <meta name="twitter:description" content="Yakınındaki eşyaları kirala, kullanmadıklarını kiraya ver. Saatlik, günlük, haftalık — dijital sözleşmeli güvenli P2P kiralama." />
+  <meta name="twitter:image" content="https://yanda-mobile.vercel.app/icon-512.png" />
+
+  <!-- PWA / Mobile -->
+  <meta name="theme-color" content="#1A5FA8" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Yanda" />
+  <link rel="apple-touch-icon" href="https://yanda-mobile.vercel.app/apple-touch-icon.png" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://yanda-landing.vercel.app/#website",
+        "url": "https://yanda-landing.vercel.app",
+        "name": "Yanda",
+        "description": "Komşudan komşuya eşya kiralama platformu",
+        "inLanguage": "tr-TR",
+        "publisher": { "@id": "https://yanda-landing.vercel.app/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://yanda-landing.vercel.app/#organization",
+        "name": "Yanda",
+        "url": "https://yanda-landing.vercel.app",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yanda-mobile.vercel.app/icon-512.png",
+          "width": 512,
+          "height": 512
+        },
+        "description": "Türkiye'nin komşudan komşuya P2P eşya kiralama platformu",
+        "foundingDate": "2026",
+        "areaServed": "TR"
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Yanda",
+        "url": "https://yanda-mobile.vercel.app",
+        "applicationCategory": "Marketplace",
+        "operatingSystem": "Android, Web",
+        "inLanguage": "tr-TR",
+        "description": "Yakınındaki eşyaları saatlik veya günlük kirala. Dijital sözleşmeli güvenli P2P kiralama.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TRY",
+          "description": "Ücretsiz kayıt. Saatlik fiyatlar kiraya verene göre değişir."
+        },
+        "publisher": { "@id": "https://yanda-landing.vercel.app/#organization" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Eşya hasar görürse ne olur?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Her kiralama dijital sözleşme ile belgelenir. Teslim ve iade sırasında fotoğraflar çekilir. Hasar durumunda bu belgeler esas alınır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Minimum kiralama süresi ne kadar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yanda'da minimum kiralama süresi 1 saattir. Saatlik, günlük, haftalık veya daha uzun süreli kiralamalar mümkündür."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Herkes eşyasını kiraya verebilir mi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Evet. Yanda hesabı olan her kullanıcı eşyasını listeleyebilir. Alet, elektronik, müzik aleti, kamp malzemesi listelenebilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kiralama iptal edilebilir mi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Evet, kiralama başlamadan önce iptal edilebilir. Kiralama başladıktan sonra kiraya verenin belirlediği koşullar geçerlidir."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
