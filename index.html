@@ -125,8 +125,75 @@
   }
   </script>
 
+  <!-- HowTo Schema (Nasıl Çalışır steps) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Yanda ile Eşya Nasıl Kiralanır?",
+    "description": "Yanda uygulamasında 4 adımda eşya kiralama veya kiraya verme.",
+    "image": "https://yanda-mobile.vercel.app/icon-512.png",
+    "totalTime": "PT5M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Hesap Oluştur",
+        "text": "E-posta ve şifre ile hızlıca kayıt ol. Profil bilgilerini tamamla ve hemen kullanmaya başla.",
+        "url": "https://yanda-mobile.vercel.app/#step1"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Eşya Ara veya Listele",
+        "text": "İhtiyacın olan eşyayı arat veya kullanmadığın eşyaları fotoğraf çekip listeye ekle.",
+        "url": "https://yanda-mobile.vercel.app/#step2"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Kiralama Sözleşmesi İmzala",
+        "text": "Kiralama tarihlerini seç, dijital sözleşmeyi onayla. Teslim alma noktasında fotoğraflarla durumu belgele.",
+        "url": "https://yanda-mobile.vercel.app/#step3"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Kullan ve İade Et",
+        "text": "Eşyayı kullan, süresi dolunca iade et. İade sırasında durum fotoğrafları çekilir ve kiralama tamamlanır.",
+        "url": "https://yanda-mobile.vercel.app/#step4"
+      }
+    ]
+  }
+  </script>
+
+  <!-- ItemList: Categories -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Yanda Kiralama Kategorileri",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Aletler" },
+      { "@type": "ListItem", "position": 2, "name": "Elektronik" },
+      { "@type": "ListItem", "position": 3, "name": "Dış Mekan" },
+      { "@type": "ListItem", "position": 4, "name": "Mutfak" },
+      { "@type": "ListItem", "position": 5, "name": "Müzik" },
+      { "@type": "ListItem", "position": 6, "name": "Daha Fazlası" }
+    ]
+  }
+  </script>
+
+  <!-- Performance: DNS prefetch + preconnect -->
+  <link rel="dns-prefetch" href="https://yanda-mobile.vercel.app" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="icon-light.svg" />
+  <link rel="icon" type="image/png" sizes="512x512" href="https://yanda-mobile.vercel.app/icon-512.png" />
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1419,8 +1486,8 @@
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#" class="nav-brand">
-        <img src="icon-light.svg" class="nav-logo logo-light" alt="Yanda Logo" />
-        <img src="icon-dark.svg"  class="nav-logo logo-dark"  alt="Yanda Logo" />
+        <img src="icon-light.svg" class="nav-logo logo-light" alt="Yanda - Komşudan komşuya eşya kiralama platformu logosu" />
+        <img src="icon-dark.svg"  class="nav-logo logo-dark"  alt="Yanda - Komşudan komşuya eşya kiralama platformu logosu" />
         <span>Yanda</span>
       </a>
       <div class="nav-links">
@@ -2092,8 +2159,8 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="icon-light.svg" class="footer-logo logo-light" alt="Yanda Logo" />
-        <img src="icon-dark.svg"  class="footer-logo logo-dark"  alt="Yanda Logo" />
+        <img src="icon-light.svg" class="footer-logo logo-light" alt="Yanda - Komşudan komşuya eşya kiralama platformu logosu" />
+        <img src="icon-dark.svg"  class="footer-logo logo-dark"  alt="Yanda - Komşudan komşuya eşya kiralama platformu logosu" />
         <span>Yanda</span>
       </div>
       <p class="footer-tagline">Bir ihtiyacın mı var, Yanda var.</p>
